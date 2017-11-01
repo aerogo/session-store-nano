@@ -10,7 +10,6 @@ import (
 
 // SessionStoreNano is a store saving sessions in a nano database.
 type SessionStoreNano struct {
-	db         *nano.Database
 	collection *nano.Collection
 }
 
@@ -21,10 +20,9 @@ type interfaceStruct struct {
 }
 
 // New creates a session store using an Aerospike database.
-func New(db *nano.Database, collectionName string) *SessionStoreNano {
+func New(collection *nano.Collection) *SessionStoreNano {
 	return &SessionStoreNano{
-		db:         db,
-		collection: db.Collection(collectionName),
+		collection: collection,
 	}
 }
 
