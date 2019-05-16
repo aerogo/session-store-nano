@@ -57,3 +57,8 @@ func (store *SessionStoreNano) Set(sid string, session *session.Session) error {
 	store.collection.Set(sid, &sessionData)
 	return nil
 }
+
+// Delete deletes the session with the given ID.
+func (store *SessionStoreNano) Delete(sid string) {
+	store.collection.Delete(sid)
+}
